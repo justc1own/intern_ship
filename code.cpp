@@ -300,7 +300,7 @@ public:
         // Sort all events by time and print them
         vector<Event> sortedEvents = outputEvents;
         sort(sortedEvents.begin(), sortedEvents.end(), 
-            [](const Event &a, const Event &b) { return a.getTime() < b.getTime(); });
+            [](const Event &a, const Event &b) { return (a.getTime() != b.getTime() ? a.getTime() < b.getTime() : a.getId() < b.getId()); });
 
         for (const auto &event : sortedEvents) {
             cout << event.toString() << endl;
